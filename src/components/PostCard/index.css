@@ -1,0 +1,105 @@
+.post-card {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  height: 800px;
+  width: 60vw;
+  border: 1px #dbdbdb solid;
+  margin-bottom: 25px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  padding-left: 0px;
+}
+
+@media screen and (max-width: 767px) {
+  .post-card {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+.profile-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 15px;
+}
+
+.profile-user-name {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto';
+}
+
+.post-image {
+  width: 100%;
+  height: 75%;
+}
+
+.likes-count {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+.post-caption {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  margin-left: 20px;
+  margin-top: 9px;
+  margin-bottom: 0px;
+}
+
+.post-created {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  margin-left: 20px;
+  color: #989898;
+}
+
+.like-chat-share-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: 15px;
+  width: 9%;
+}
+
+@media screen and (max-width: 767px) {
+  .like-chat-share-section {
+    width: 25%;
+  }
+}
+
+.like-button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lcs-symbol {
+  height: 20px;
+  width: 20px;
+}
+
+.fcLike-symbol {
+  height: 24px;
+  width: 24px;
+}

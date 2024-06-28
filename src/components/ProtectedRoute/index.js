@@ -3,10 +3,10 @@ import Cookies from 'js-cookie'
 
 const ProtectedRoute = props => {
   const jwtToken = Cookies.get('jwtToken')
-  if (jwtToken) {
-    return <Route {...props} />
+  if (jwtToken === undefined) {
+    return <Redirect to="/login" />
   }
-  return <Redirect to="/login" />
+  return <Route {...props} />
 }
 
 export default ProtectedRoute

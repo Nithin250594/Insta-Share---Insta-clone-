@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import Cookies from 'js-cookie'
-import {useHistory} from 'react-router-dom'
+import {Redirect, useHistory} from 'react-router-dom'
 
 import './index.css'
 
@@ -40,6 +40,12 @@ const Login = () => {
     } else {
       setFailureMsg(data.error_msg)
     }
+  }
+
+  const jwtToken = Cookies.get('jwtToken')
+
+  if (jwtToken !== undefined) {
+    return <Redirect to="/" />
   }
 
   return (
