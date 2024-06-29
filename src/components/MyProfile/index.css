@@ -1,0 +1,138 @@
+.my-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-top: 25px;
+}
+
+.my-profile-details-section {
+  display: flex;
+  align-self: flex-start;
+}
+
+.my-profile-pic {
+  height: 150px;
+  width: 150px;
+  border-radius: 50px;
+}
+
+.my-profile-text-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  margin-left: 30px;
+}
+
+.my-profile-user-name {
+  font-size: 28px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.p-user-name {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
+}
+
+.my-profile-post-followers-count-sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.span-count {
+  font-weight: 500;
+}
+
+.my-profile-posts-count {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  margin-bottom: 4px;
+}
+
+.user-bio {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
+}
+
+.my-profile-stories-list {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  align-self: flex-start;
+  margin-top: 40px;
+}
+
+.my-profile-story-image {
+  margin: 0px 10px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+}
+
+.story-card {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  border: 1px #dbdbdb solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.separator {
+  border: 1px #c6c6c8 solid;
+  width: 100%;
+}
+
+.my-posts-grid-title {
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 20px;
+}
+
+.my-post-text {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'Roboto';
+}
+
+.my-profile-post-list {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.my-profile-post-card {
+  width: 330px;
+  height: 330px;
+}
+
+.my-profile-post-image {
+  width: 100%;
+  height: 100%;
+}

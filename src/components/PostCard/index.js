@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Cookies from 'js-cookie'
 import {BsHeart, BsChat} from 'react-icons/bs'
 import {FcLike} from 'react-icons/fc'
 import {IoMdShare} from 'react-icons/io'
@@ -9,7 +10,6 @@ const PostCard = props => {
   const {postInfo} = props
   const {
     postId,
-    userId,
     userName,
     profilePic,
     postDetails,
@@ -18,8 +18,22 @@ const PostCard = props => {
   } = postInfo
   const {imageUrl, caption} = postDetails
 
-  const onClickLike = () => {
+  const jwtToken = Cookies.get('jwtToken')
+
+  const onClickLike = async () => {
     setLikedStatus(prev => !prev)
+    const likeInfo = {like_status: isLiked}
+    const postLikeApi = `https://apis.ccbp.in/insta-share/posts/${postId}/like`
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(likeInfo),
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    }
+    const postLikeResponse = await fetch(postLikeApi, options)
+    const data = await postLikeResponse.json()
+    console.log(data)
   }
 
   return (

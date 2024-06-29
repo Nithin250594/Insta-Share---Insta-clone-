@@ -15,10 +15,22 @@
   }
 }
 
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
 .slick-container {
   width: 80%;
   max-width: 1100px;
   margin-top: 25px;
+}
+
+.user-story {
+  text-decoration-line: none;
+  color: #1e293b;
 }
 
 .logo-image {
@@ -61,4 +73,56 @@
   flex-direction: column;
   list-style-type: none;
   padding-left: 0px;
+}
+
+.error-view-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.alert-icon {
+  height: 60px;
+  width: 60px;
+  color: #4094ef;
+}
+
+.retry-text {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.retry-button {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 7px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 7px;
+}
+
+.network-failure-image {
+  width: 450px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .network-failure-image {
+    width: 300px;
+    height: 150px;
+  }
 }

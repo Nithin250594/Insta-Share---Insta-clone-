@@ -1,14 +1,37 @@
 import {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
 import Cookies from 'js-cookie'
+import {IoIosWarning} from 'react-icons/io'
+
 import NavBar from '../NavBar'
 import PostCard from '../PostCard'
 
 import './index.css'
 
+const apiStatusStories = {
+  initial: 'INITIAL',
+  inProgress: 'INPROGRESS',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+}
+
+const apiStatusPosts = {
+  initial: 'INITIAL',
+  inProgress: 'INPROGRESS',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  networkFailure: 'NETWORK ISSUE',
+}
+
 const Home = () => {
+  const [storyApiStatus, setStoryApiStatus] = useState(apiStatusStories.initial)
+  const [postApiStatus, setPostApiStatus] = useState(apiStatusPosts.initial)
   const [storiesList, setStoriesList] = useState([])
   const [postsList, setPostsList] = useState([])
+
+  const [retryStatus, setRetryStatus] = useState(false)
   const jwtToken = Cookies.get('jwtToken')
 
   const getStoriesList = storiesDetails => {
@@ -43,6 +66,8 @@ const Home = () => {
   }
 
   useEffect(() => {
+    setStoryApiStatus(apiStatusStories.inProgress)
+    setPostApiStatus(apiStatusPosts.inProgress)
     const storiesApi = 'https://apis.ccbp.in/insta-share/stories'
     const storyOptions = {
       headers: {
@@ -65,9 +90,11 @@ const Home = () => {
         const storiesData = await storiesResponse.json()
         if (storiesResponse.ok) {
           getStoriesList(storiesData.users_stories)
+          setStoryApiStatus(apiStatusStories.success)
         }
       } catch (error) {
         console.error('Error during get stories API Call :', error)
+        setStoryApiStatus(apiStatusStories.failure)
       }
     }
 
@@ -77,17 +104,19 @@ const Home = () => {
         const postsData = await postsResponse.json()
         if (postsResponse.ok) {
           getPostsList(postsData.posts)
+          setPostApiStatus(apiStatusPosts.success)
+        } else {
+          setPostApiStatus(apiStatusPosts.failure)
         }
       } catch (error) {
         console.error('Error during get Posts API Call :', error)
+        setPostApiStatus(apiStatusPosts.networkFailure)
       }
     }
 
     getStories()
     getPosts()
-  }, [jwtToken])
-
-  console.log(storiesList)
+  }, [jwtToken, retryStatus])
 
   const settings = {
     dots: false,
@@ -120,36 +149,101 @@ const Home = () => {
     ],
   }
 
-  console.log(postsList)
+  const loadingPage = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  )
+
+  const storySuccessPage = () => (
+    <div className="main-container">
+      <div className="slick-container">
+        <Slider {...settings}>
+          {storiesList.map(eachStory => {
+            const {userId, userName, storyUrl} = eachStory
+            return (
+              <Link
+                to={`/users/${userId}`}
+                className="slick-item user-story"
+                key={userId}
+              >
+                <img className="logo-image" src={storyUrl} alt="user story" />
+                <p className="user-name">{userName}</p>
+              </Link>
+            )
+          })}
+        </Slider>
+      </div>
+    </div>
+  )
+
+  const postSuccessPage = () => (
+    <ul className="post-list-container">
+      {postsList.map(eachPost => (
+        <PostCard key={eachPost.postId} postInfo={eachPost} />
+      ))}
+    </ul>
+  )
+
+  const onClickRetry = () => {
+    setRetryStatus(prev => !prev)
+  }
+
+  const postFailurePage = () => (
+    <div className="error-view-container">
+      <IoIosWarning className="alert-icon" />
+      <h1 className="retry-text">Something went wrong. Please try again</h1>
+      <button type="button" className="retry-button" onClick={onClickRetry}>
+        Try Again
+      </button>
+    </div>
+  )
+
+  const postNetworkFailure = () => (
+    <div className="error-view-container">
+      <img
+        src="https://res.cloudinary.com/dg14m0ern/image/upload/v1719642236/Group_7522_jwwoel.png"
+        alt="network failure"
+        className="network-failure-image"
+      />
+      <h1 className="retry-text">Something went wrong. Please try again</h1>
+      <button type="button" className="retry-button" onClick={onClickRetry}>
+        Try Again
+      </button>
+    </div>
+  )
+
+  const switchStoryRender = () => {
+    switch (storyApiStatus) {
+      case apiStatusStories.inProgress:
+        return loadingPage()
+      case apiStatusStories.success:
+        return storySuccessPage()
+      default:
+        return null
+    }
+  }
+
+  const switchPostRender = () => {
+    switch (postApiStatus) {
+      case apiStatusPosts.inProgress:
+        return loadingPage()
+      case apiStatusPosts.success:
+        return postSuccessPage()
+      case apiStatusPosts.failure:
+        return postFailurePage()
+      case apiStatusPosts.networkFailure:
+        return postNetworkFailure()
+      default:
+        return null
+    }
+  }
 
   return (
     <>
       <NavBar />
       <div className="home-bg">
-        <div className="main-container">
-          <div className="slick-container">
-            <Slider {...settings}>
-              {storiesList.map(eachStory => {
-                const {userId, userName, storyUrl} = eachStory
-                return (
-                  <div className="slick-item" key={userId}>
-                    <img
-                      className="logo-image"
-                      src={storyUrl}
-                      alt="company logo"
-                    />
-                    <p className="user-name">{userName}</p>
-                  </div>
-                )
-              })}
-            </Slider>
-          </div>
-        </div>
-        <ul className="post-list-container">
-          {postsList.map(eachPost => (
-            <PostCard key={eachPost.postId} postInfo={eachPost} />
-          ))}
-        </ul>
+        {switchStoryRender()} {switchPostRender()}
       </div>
     </>
   )

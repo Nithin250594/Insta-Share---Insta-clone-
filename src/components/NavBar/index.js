@@ -30,14 +30,14 @@ const NavBar = () => {
   return (
     <>
       <nav className="insta-nav-bar">
-        <div className="logo-section">
+        <Link to="/" className="logo-section">
           <img
             src="https://res.cloudinary.com/dg14m0ern/image/upload/v1718973234/Standard_Collection_8_ikvoci.png"
             alt="logo"
             className="nav-logo"
           />
           <h1 className="logo-title">Insta Share</h1>
-        </div>
+        </Link>
         <div className="insta-links">
           <div className="search-container">
             <input
