@@ -92,7 +92,7 @@ const MyProfile = () => {
           className="my-profile-pic"
         />
         <div className="my-profile-text-section">
-          <h1 className="my-profile-user-name">{myProfileData.userName}</h1>
+          <h1 className="my-profile-user-name">{myProfileData.userName} </h1>
           <div className="my-profile-post-followers-count-sec">
             <p className="my-profile-posts-count">
               <span className="span-count">{myProfileData.postsCount} </span>

@@ -8,15 +8,23 @@
   margin-top: 25px;
 }
 
+@media screen and (max-width: 767px) {
+  .my-profile-container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 .my-profile-details-section {
   display: flex;
   align-self: flex-start;
+  width: 100%;
 }
 
 .my-profile-pic {
   height: 150px;
   width: 150px;
-  border-radius: 50px;
+  border-radius: 75px;
 }
 
 .my-profile-text-section {
@@ -24,6 +32,7 @@
   flex-direction: column;
   margin-top: 0px;
   margin-left: 30px;
+  width: 100%;
 }
 
 .my-profile-user-name {
@@ -105,6 +114,12 @@
   align-items: center;
 }
 
+@media screen and (max-width: 767px) {
+  .my-posts-grid-title {
+    margin-left: 25px;
+  }
+}
+
 .grid-icon {
   width: 18px;
   height: 18px;
@@ -117,11 +132,17 @@
   font-family: 'Roboto';
 }
 
+@media screen and (max-width: 767px) {
+  .my-post-text {
+    font-size: 19px;
+  }
+}
+
 .my-profile-post-list {
   list-style-type: none;
   padding-left: 0px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
@@ -130,6 +151,19 @@
 .my-profile-post-card {
   width: 330px;
   height: 330px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .my-profile-post-card {
+    width: 118px;
+    height: 118px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-right: 3px;
+    margin-left: 3px;
+  }
 }
 
 .my-profile-post-image {

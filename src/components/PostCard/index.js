@@ -71,7 +71,9 @@ const PostCard = props => {
         <BsChat className="lcs-symbol" />
         <IoMdShare className="lcs-symbol" />
       </div>
-      <p className="likes-count">{likesCount} Likes</p>
+      <p className="likes-count">
+        {isLiked ? likesCount + 1 : likesCount} Likes
+      </p>
       <p className="post-caption">{caption}</p>
       <p className="post-created">{createdAt}</p>
     </li>

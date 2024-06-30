@@ -5,6 +5,8 @@ import Slider from 'react-slick'
 import Cookies from 'js-cookie'
 import {IoIosWarning} from 'react-icons/io'
 
+// import SearchContext from '../../context/SearchContext'
+
 import NavBar from '../NavBar'
 import PostCard from '../PostCard'
 

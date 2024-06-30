@@ -1,12 +1,15 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import Cookies from 'js-cookie'
 import {Link, useHistory} from 'react-router-dom'
 import {FaSearch} from 'react-icons/fa'
 import {IoMdMenu, IoMdCloseCircle} from 'react-icons/io'
+import SearchContext from '../../context/SearchContext'
 
 import './index.css'
 
 const NavBar = () => {
+  const [searchInput, setSearchInput] = useState('')
+  const {updatedSearchInput} = useContext(SearchContext)
   const [hamburgerIcon, setHamburgerIcon] = useState(false)
   const [mobileSearchBar, setMobileSearchBar] = useState(false)
 
@@ -27,6 +30,28 @@ const NavBar = () => {
     setHamburgerIcon(prevState => !prevState)
   }
 
+  const onChangeSearchInput = event => {
+    setSearchInput(event.target.value)
+  }
+
+  const onClickSearchIcon = () => {
+    updatedSearchInput(searchInput)
+    if (searchInput !== '') {
+      history.replace('/search-results')
+    }
+  }
+
+  const onClickEnter = event => {
+    if (event.key === 'Enter') {
+      updatedSearchInput(searchInput)
+      if (searchInput !== '') {
+        history.replace('/search-results')
+      }
+    }
+  }
+
+  //   console.log(searchInput)
+
   return (
     <>
       <nav className="insta-nav-bar">
@@ -44,9 +69,16 @@ const NavBar = () => {
               type="search"
               placeholder="Search Caption"
               className="search-box"
+              value={searchInput}
+              onChange={onChangeSearchInput}
+              onKeyDown={onClickEnter}
             />
             <div className="search-icon-box">
-              <FaSearch className="search-logo-icon" testid="searchIcon" />
+              <FaSearch
+                className="search-logo-icon"
+                testid="searchIcon"
+                onClick={onClickSearchIcon}
+              />
             </div>
           </div>
 
@@ -95,9 +127,16 @@ const NavBar = () => {
               type="search"
               placeholder="Search Caption"
               className="search-box"
+              value={searchInput}
+              onChange={onChangeSearchInput}
+              onKeyDown={onClickEnter}
             />
             <div className="search-icon-box">
-              <FaSearch className="search-logo-icon" testid="searchIcon" />
+              <FaSearch
+                className="search-logo-icon"
+                testid="searchIcon"
+                onClick={onClickSearchIcon}
+              />
             </div>
           </div>
         )}

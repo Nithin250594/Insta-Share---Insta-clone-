@@ -1,0 +1,55 @@
+.searched-results-title {
+  font-size: 21px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  margin-left: 20%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.search-list-container {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-left: 0px;
+  background-color: white;
+  margin-left: 18%;
+  margin-right: 18%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: 0px 4px 16px 0px #7b879429;
+  border-radius: 10px;
+}
+
+.search-not-image {
+  width: 400px;
+  height: 280px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .search-not-image {
+    width: 300px;
+    height: 250px;
+  }
+}
+
+.search-again-heading {
+  font-family: Roboto;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 0px;
+}
+
+.search-again-text {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: center;
+  color: #989898;
+  margin-top: 2px;
+}
