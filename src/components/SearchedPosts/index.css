@@ -7,6 +7,12 @@
   margin-bottom: 25px;
 }
 
+@media screen and (max-width: 767px) {
+  .searched-results-title {
+    display: none;
+  }
+}
+
 .search-list-container {
   display: flex;
   flex-direction: column;
@@ -19,6 +25,16 @@
   padding-bottom: 30px;
   box-shadow: 0px 4px 16px 0px #7b879429;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .search-list-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    box-shadow: none;
+    padding-top: 0px;
+    margin-top: 5px;
+  }
 }
 
 .search-not-image {

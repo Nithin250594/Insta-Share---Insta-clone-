@@ -4,13 +4,12 @@
   align-items: center;
   padding-left: 30px;
   padding-right: 30px;
-  height: 14vh;
+  height: 10vh;
 }
 
 @media screen and (min-width: 768px) {
   .insta-nav-bar {
     border-bottom: 1px #b9b8ba solid;
-    height: 10vh;
   }
 }
 
@@ -18,7 +17,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
 }
 
 .logo-section {

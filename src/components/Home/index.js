@@ -158,24 +158,22 @@ const Home = () => {
   )
 
   const storySuccessPage = () => (
-    <div className="main-container">
-      <div className="slick-container">
-        <Slider {...settings}>
-          {storiesList.map(eachStory => {
-            const {userId, userName, storyUrl} = eachStory
-            return (
-              <Link
-                to={`/users/${userId}`}
-                className="slick-item user-story"
-                key={userId}
-              >
-                <img className="logo-image" src={storyUrl} alt="user story" />
-                <p className="user-name">{userName}</p>
-              </Link>
-            )
-          })}
-        </Slider>
-      </div>
+    <div className="slick-container">
+      <Slider {...settings}>
+        {storiesList.map(eachStory => {
+          const {userId, userName, storyUrl} = eachStory
+          return (
+            <Link
+              to={`/users/${userId}`}
+              className="slick-item user-story"
+              key={userId}
+            >
+              <img className="logo-image" src={storyUrl} alt="user story" />
+              <p className="user-name">{userName}</p>
+            </Link>
+          )
+        })}
+      </Slider>
     </div>
   )
 
@@ -245,7 +243,8 @@ const Home = () => {
     <>
       <NavBar />
       <div className="home-bg">
-        {switchStoryRender()} {switchPostRender()}
+        <div className="main-container">{switchStoryRender()}</div>
+        {switchPostRender()}
       </div>
     </>
   )

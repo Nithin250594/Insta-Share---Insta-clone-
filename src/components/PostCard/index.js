@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import Cookies from 'js-cookie'
+import {Link} from 'react-router-dom'
 import {BsHeart, BsChat} from 'react-icons/bs'
 import {FcLike} from 'react-icons/fc'
 import {IoMdShare} from 'react-icons/io'
@@ -10,6 +11,7 @@ const PostCard = props => {
   const {postInfo} = props
   const {
     postId,
+    userId,
     userName,
     profilePic,
     postDetails,
@@ -38,14 +40,14 @@ const PostCard = props => {
 
   return (
     <li className="post-card" key={postId}>
-      <div className="profile-section">
+      <Link to={`/users/${userId}`} className="profile-section">
         <img
           src={profilePic}
           alt="post author profile"
           className="profile-pic"
         />
         <p className="profile-user-name">{userName}</p>
-      </div>
+      </Link>
       <img src={imageUrl} alt="post" className="post-image" />
       <div className="like-chat-share-section">
         {isLiked ? (
